@@ -1,0 +1,244 @@
+[
+    {
+        "id": 1,
+        "name": "Marinara",
+        "ingredients": [
+            "San Marzano tomato sauce",
+            "garlic",
+            "oregano",
+            "olive oil"
+        ],
+        "price": 3200,
+        "allergens": [
+            1,
+            9
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Margherita",
+        "ingredients": [
+            "San Marzano tomato sauce",
+            "mozzarella",
+            "basil",
+            "extra virgin olive oil"
+        ],
+        "price": 3500,
+        "allergens": [
+            3,
+            7
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Capricciosa",
+        "ingredients": [
+            "San Marzano tomato sauce",
+            "mozzarella",
+            "mushrooms",
+            "ham",
+            "artichokes",
+            "olives",
+            "extra virgin olive oil"
+        ],
+        "price": 3800,
+        "allergens": [
+            1,
+            3,
+            7,
+            12
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Pescatora",
+        "ingredients": [
+            "San Marzano tomato sauce",
+            "mozzarella",
+            "mixed seafood",
+            "parsley"
+        ],
+        "price": 4200,
+        "allergens": [
+            1,
+            2,
+            4,
+            14
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Quattro Formaggi",
+        "ingredients": [
+            "San Marzano tomato sauce",
+            "mozzarella",
+            "parmesan",
+            "blue cheese",
+            "creamy soft cheese"
+        ],
+        "price": 4000,
+        "allergens": [
+            1,
+            3,
+            7
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Pepperoni",
+        "ingredients": [
+            "San Marzano tomato sauce",
+            "mozzarella",
+            "pepperoni"
+        ],
+        "price": 3700,
+        "allergens": [
+            1,
+            3,
+            10
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Vegetarian",
+        "ingredients": [
+            "San Marzano tomato sauce",
+            "mozzarella",
+            "bell peppers",
+            "onions",
+            "mushrooms",
+            "olives"
+        ],
+        "price": 3600,
+        "allergens": [
+            1,
+            3,
+            7
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Nutty Truffle",
+        "ingredients": [
+            "white sauce",
+            "mozzarella",
+            "mushrooms",
+            "truffle oil",
+            "walnuts"
+        ],
+        "price": 4500,
+        "allergens": [
+            1,
+            3,
+            7,
+            8
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Hawaiian",
+        "ingredients": [
+            "San Marzano tomato sauce",
+            "mozzarella",
+            "ham",
+            "pineapple"
+        ],
+        "price": 3700,
+        "allergens": [
+            1,
+            3,
+            7
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Spicy Peanut Chicken",
+        "ingredients": [
+            "spicy peanut sauce",
+            "mozzarella",
+            "grilled chicken",
+            "red onions",
+            "cilantro"
+        ],
+        "price": 4100,
+        "allergens": [
+            1,
+            3,
+            5,
+            7
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Sesame Shrimp",
+        "ingredients": [
+            "white sauce",
+            "mozzarella",
+            "shrimp",
+            "green onions",
+            "sesame seeds"
+        ],
+        "price": 4300,
+        "allergens": [
+            1,
+            3,
+            7,
+            11,
+            14
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Soy Tofu Veggie",
+        "ingredients": [
+            "soy sauce base",
+            "mozzarella",
+            "tofu",
+            "bell peppers",
+            "mushrooms",
+            "olives"
+        ],
+        "price": 3800,
+        "allergens": [
+            1,
+            3,
+            6,
+            7
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Vegan Lupin",
+        "ingredients": [
+            "tomato sauce",
+            "lupin based vegan cheese",
+            "bell peppers",
+            "onions",
+            "mushrooms",
+            "olives"
+        ],
+        "price": 4000,
+        "allergens": [
+            1,
+            13
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Chicken Pesto",
+        "ingredients": [
+            "pesto sauce",
+            "mozzarella",
+            "grilled chicken",
+            "tomatoes",
+            "basil"
+        ],
+        "price": 4200,
+        "allergens": [
+            1,
+            3,
+            7,
+            8
+        ]
+    }
+]
