@@ -4,6 +4,7 @@ const fileReaderAsync = require('../utils/fileReader');
 const allergenPath = path.join(__dirname, '..', 'backend', 'allergens.json');
 const pizzaPath = path.join(__dirname, '..', 'backend', 'pizzas.json');
 const testOrderPath = path.join(__dirname, '..', 'backend', 'testOrders.json');
+const orderPath = path.join(__dirname, '..', 'backend', 'orders.json');
 
 const listPizzas = async (req, res) => {
   try {
@@ -36,8 +37,26 @@ const listOrders = async (req, res) => {
   }
 };
 
+const placeOrders = async (req, res) => {
+  try {
+    const pizzaData = req.body;
+    // const order = 
+    const currentOrders = await fileReaderAsync(orderPath);
+    const ordersArray = JSON.parse(currentOrders);
+
+    ordersArray.push(pizzaData);
+
+    await fsPromises.writeFile(orderPath, JSON.stringify(ordersArray));
+    res.status(200).send('OK');
+  } catch (error) {
+    res.status(500).send('WRITE FAIL');
+    console.error(error);
+  }
+};
+
 module.exports = {
   listPizzas,
   listAllergens,
   listOrders,
+  placeOrders,
 };
