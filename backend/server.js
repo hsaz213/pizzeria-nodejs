@@ -14,10 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Serve static files
-app.use(express.static(path.join(__dirname, '../frontend/public')));
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 app.use('/backend', express.static(path.join(__dirname)));
-
 
 // Routes
 app.use('/', routes);
