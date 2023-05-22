@@ -14,6 +14,17 @@ const listPizzas = async (req, res) => {
   }
 };
 
+const listAllergens = async (req, res) => {
+  try {
+    const data = await fileReaderAsync(allergenPath);
+    const allergenArray = JSON.parse(data);
+    res.json(allergenArray);
+  } catch (error) {
+    res.status(500).send('error');
+  }
+};
+
 module.exports = {
   listPizzas,
+  listAllergens,
 };
