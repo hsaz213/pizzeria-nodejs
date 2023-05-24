@@ -5,6 +5,18 @@ const allergenPath = path.join(__dirname, '..', 'backend', 'allergens.json');
 const pizzaPath = path.join(__dirname, '..', 'backend', 'pizzas.json');
 // const testOrderPath = path.join(__dirname, '..', 'backend', 'testOrders.json');
 const orderPath = path.join(__dirname, '..', 'backend', 'orders.json');
+const indexPath = path.join(__dirname, '..', 'frontend', 'views', 'index.html');
+
+
+const getMainPage = async (req, res) => {
+  try {
+    await res.sendFile(indexPath);
+  } catch (error) {
+    res.status(500).send('Failed to load main page.');
+    console.error(error);
+  }
+};
+
 
 const listPizzas = async (req, res) => {
   try {
@@ -61,4 +73,5 @@ module.exports = {
   listAllergens,
   listOrders,
   placeOrders,
+  getMainPage,
 };
