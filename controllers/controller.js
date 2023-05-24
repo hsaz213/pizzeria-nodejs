@@ -3,7 +3,7 @@ const path = require('path');
 const fileReaderAsync = require('../utils/fileReader');
 const allergenPath = path.join(__dirname, '..', 'backend', 'allergens.json');
 const pizzaPath = path.join(__dirname, '..', 'backend', 'pizzas.json');
-const testOrderPath = path.join(__dirname, '..', 'backend', 'testOrders.json');
+// const testOrderPath = path.join(__dirname, '..', 'backend', 'testOrders.json');
 const orderPath = path.join(__dirname, '..', 'backend', 'orders.json');
 
 const listPizzas = async (req, res) => {
@@ -28,7 +28,7 @@ const listAllergens = async (req, res) => {
 
 const listOrders = async (req, res) => {
   try {
-    const data = await fileReaderAsync(testOrderPath);
+    const data = await fileReaderAsync(orderPath);
     const testOrdersArray = JSON.parse(data);
     res.json(testOrdersArray);
   } catch (error) {
@@ -53,6 +53,8 @@ const placeOrders = async (req, res) => {
     console.error(error);
   }
 };
+
+
 
 module.exports = {
   listPizzas,

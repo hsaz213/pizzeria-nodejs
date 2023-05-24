@@ -14,11 +14,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Serve static files
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, '../frontend/views')));
+app.use(express.static(path.join(__dirname, '../frontend/public')));
+
+
 
 app.use('/backend', express.static(path.join(__dirname)));
 
 // Routes
 app.use('/', routes);
 
-app.listen(port, () => console.log(`http://127.0.0.1:${port}`));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/views/', 'index.html'));
+});
+
+
+app.listen(port, () => console.log(`Server running on http://127.0.0.1:${port}`));
