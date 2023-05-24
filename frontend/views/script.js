@@ -6,9 +6,10 @@ function fetchPizzasAndAllergens() {
     .then(([pizzas, allergens]) => {
       const pizzaList = document.getElementById('pizza-list');
 
-      pizzas.forEach((pizza) => {
+      pizzas.forEach((pizza, index) => {
         const pizzaItem = document.createElement('div');
         pizzaItem.classList.add('pizza-item');
+        pizzaItem.dataset.id = index;
 
         const pizzaName = document.createElement('h2');
         pizzaName.textContent = pizza.name;
@@ -39,12 +40,36 @@ function fetchPizzasAndAllergens() {
         pizzaItem.appendChild(pizzaIngredients);
         pizzaItem.appendChild(pizzaAllergens);
 
+        pizzaItem.insertAdjacentHTML('beforeend', 'Amount: <br><input type="number" class="pizzaAmount">');
+
         pizzaList.appendChild(pizzaItem);
+
       });
+      createAddToCartButton();
+      userForm();
     });
 }
 
 const pizzaListElement = document.getElementById('pizza-list');
+
+const addToCartButtonListener = () => {
+  const button = document.getElementById('addToCartButton');
+  button.addEventListener('click', () => {
+    document.getElementById('customerForm').classList.toggle('hidden');
+  });
+};
+
+const createAddToCartButton = () => {
+  const button = document.createElement('button');
+  button.id = 'addToCartButton';
+  button.classList.add('btn');
+  button.textContent = 'Add to cart';
+  pizzaListElement.appendChild(button);
+  addToCartButtonListener();
+};
+
+const orderObject = {}; /////////////////////////////////////////////////////////////////
+
 
 const userForm = () => {
   const userFormContainer = document.createElement('div');
@@ -52,8 +77,6 @@ const userForm = () => {
   pizzaListElement.appendChild(userFormContainer);
   const form = document.createElement('form');
   form.id = 'customerForm';
-  form.method = 'POST';
-  form.action = '/api/order';
   form.classList.add('hidden');
   userFormContainer.appendChild(form);
 
@@ -67,27 +90,40 @@ const userForm = () => {
   <label for='street'>Street and number:</label>
   <input type='text' name='street', required><br>
   <button id='orderButton'>Place order</button>`);
+
+  let orderObjectId = 0;
+  document.getElementById('orderButton').addEventListener('click', (event) => {
+    event.preventDefault(); ////////////////////////////////////////////////////////////////////////
+    orderObjectId++;
+    orderObject.id = orderObjectId;
+    orderObject.pizzas = [];
+    orderObject.date = getDate();
+    orderObject.customer = getUserInfo();
+
+    document.querySelectorAll('.pizzaAmount').forEach((amount) => {
+      if (amount.value && amount.value !== 0) {
+        const pizzaObject = {
+          'id': parseInt(amount.parentElement.dataset.id) + 1,
+          'amount': amount.value,
+        };
+        orderObject.pizzas.push(pizzaObject);
+      }
+    });
+    console.log(orderObject);
+  });
 };
 
 const getUserInfo = () => {
   const form = document.getElementById('customerForm');
   const userInfo = {
-    'name': form.elements.name.value,
-    'email': form.elements.email.value,
+    'name': form.elements.name.value || '',
+    'email': form.elements.email.value || '',
     'address': {
-      'city': form.elements.city.value,
-      'street': form.elements.street.value,
+      'city': form.elements.city.value || '',
+      'street': form.elements.street.value || '',
     },
   };
   return userInfo;
-};
-
-const saveUserButtonListener = () => {
-  const button = document.getElementById('orderButton');
-  button.addEventListener('click', () => {
-    const customer = getUserInfo();
-    console.log(customer);
-  });
 };
 
 const getDate = () => {
@@ -102,21 +138,8 @@ const getDate = () => {
   return orderDateAndTime;
 };
 
-const orderButtonListener = () => {
-  const button = document.getElementById('orderButton');
-  button.addEventListener('click', () => {
-    const date = getDate();
-    console.log(date);
-  });
-};
-
 const loadEvent = () => {
-  userForm();
-  getUserInfo();
-  getDate();
-  orderButtonListener();
-  saveUserButtonListener();
+  fetchPizzasAndAllergens();
 };
 
 window.addEventListener('load', loadEvent);
-document.addEventListener('DOMContentLoaded', fetchPizzasAndAllergens);

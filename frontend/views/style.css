@@ -100,3 +100,25 @@ text-shadow: 1px 1px 0 #000,
     object-fit: cover;
     margin-bottom: 15px;
 }
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #ff8c00;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #ff6f00;
+  }
+  
+  .btn:active {
+    background-color: #ff4500;
+  }
