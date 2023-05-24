@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'hotPizza';
+    src: url('/fonts/hot-pizza.normal.ttf');
+}
+
+h1 {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 20rem;
+padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+font-family: 'hotPizza';
+font-size: 2.5rem;
+text-decoration: underline;
+/* text-shadow: 0.2rem 0.2rem 0.2rem yellow; */
+text-shadow: 1px 1px 0 #000,
+            -1px 1px 0 #000,
+            1px -1px 0 #000,
+            -1px -1px 0 #000,
+            0px 1px 0 #000,
+            0px -1px 0 #000,
+            -1px 0px 0 #000,
+            1px 0px 0 #000,
+            2px 2px 0 #000,
+            -2px 2px 0 #000,
+            2px -2px 0 #000,
+            -2px -2px 0 #000,
+            0px 2px 0 #000,
+            0px -2px 0 #000,
+            -2px 0px 0 #000,
+            2px 0px 0 #000,
+            1px 2px 0 #000,
+            -1px 2px 0 #000,
+            1px -2px 0 #000,
+            -1px -2px 0 #000,
+            2px 1px 0 #000,
+            -2px 1px 0 #000,
+            2px -1px 0 #000,
+            -2px -1px 0 #000;
+    /* text-shadow: black; */
+    color: red;
+    border-color: black;
+    text-decoration-color: yellow;
+    background-color: orangered;
+    border-radius: 1rem;
+}
+
+
+#pizza-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.pizza-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    margin: 1rem;
+    padding: 1rem;
+    width: 12rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.pizza-name {
+    font-family: 'hotPizza';
+    /* text-decoration: underline; */
+        text-decoration: underline;
+    text-decoration-color: yellow;
+    text-decoration-style: double;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.pizza-price {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.pizza-ingredients,
+.pizza-allergens {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.pizza-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
