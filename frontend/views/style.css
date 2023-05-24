@@ -3,6 +3,10 @@
     src: url('/fonts/hot-pizza.normal.ttf');
 }
 
+.hidden {
+    display: none;
+}
+
 h1 {
 display: flex;
 align-items: center;

@@ -54,6 +54,7 @@ const userForm = () => {
   form.id = 'customerForm';
   form.method = 'POST';
   form.action = '/api/order';
+  form.classList.add('hidden');
   userFormContainer.appendChild(form);
 
   document.getElementById('customerForm').insertAdjacentHTML('beforeend',

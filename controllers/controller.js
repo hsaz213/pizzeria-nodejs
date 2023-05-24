@@ -6,7 +6,7 @@ const pizzaPath = path.join(__dirname, '..', 'backend', 'pizzas.json');
 // const testOrderPath = path.join(__dirname, '..', 'backend', 'testOrders.json');
 const orderPath = path.join(__dirname, '..', 'backend', 'orders.json');
 const indexPath = path.join(__dirname, '..', 'frontend', 'views', 'index.html');
-
+const ordersPagePath = path.join(__dirname, '..', 'frontend', 'views', 'orders.html');
 
 const getMainPage = async (req, res) => {
   try {
@@ -17,6 +17,14 @@ const getMainPage = async (req, res) => {
   }
 };
 
+const getOrdersPage = async (req, res) => {
+  try {
+    await res.sendFile(ordersPagePath);
+  } catch (error) {
+    res.status(500).send('FAIL');
+    console.error(error);
+  }
+};
 
 const listPizzas = async (req, res) => {
   try {
@@ -52,7 +60,6 @@ const listOrders = async (req, res) => {
 const placeOrders = async (req, res) => {
   try {
     const pizzaData = req.body;
-    // const order = 
     const currentOrders = await fileReaderAsync(orderPath);
     const ordersArray = JSON.parse(currentOrders);
 
@@ -74,4 +81,5 @@ module.exports = {
   listOrders,
   placeOrders,
   getMainPage,
+  getOrdersPage,
 };

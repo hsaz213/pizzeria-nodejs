@@ -7,9 +7,10 @@ router.get('/api/pizza', controller.listPizzas);
 router.get('/api/allergen', controller.listAllergens);
 router.get('/order', controller.listOrders);
 router.post('/order', controller.placeOrders);
+router.get('/orders', controller.getOrdersPage);
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/views/', 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/views/', 'index.html'));
 });
 
 module.exports = router;
