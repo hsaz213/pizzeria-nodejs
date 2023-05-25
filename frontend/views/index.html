@@ -12,6 +12,15 @@
 <body>
     <div id="root">
         <h1>Pizza Menu</h1>
+        <div class="multiselect">
+            <div class="selectBox" onclick="showCheckboxes()">
+              <select>
+                <option>Select allergens</option>
+              </select>
+              <div class="overSelect"></div>
+            </div>
+            <div id="checkboxes"></div>
+          </div>
         <div id="pizza-list"></div>
     <script src="script.js"></script>
     </div>

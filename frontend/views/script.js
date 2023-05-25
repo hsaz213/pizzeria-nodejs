@@ -23,7 +23,7 @@ function fetchPizzasAndAllergens() {
 
 
         const pizzaPrice = document.createElement('span');
-        pizzaPrice.textContent = `${pizza.price / 100}$`;
+        pizzaPrice.textContent = `${pizza.price} Ft`;
         pizzaPrice.classList.add('pizza-price');
 
         const pizzaIngredients = document.createElement('p');
@@ -40,17 +40,32 @@ function fetchPizzasAndAllergens() {
         pizzaItem.appendChild(pizzaIngredients);
         pizzaItem.appendChild(pizzaAllergens);
 
-        pizzaItem.insertAdjacentHTML('beforeend', 'Amount: <br><input type="number" class="pizzaAmount">');
+        const amountInput = document.createElement('input');
+        amountInput.type = 'number';
+        amountInput.classList.add('orderFormInput');
+        pizzaItem.appendChild(amountInput);
 
         pizzaList.appendChild(pizzaItem);
-
       });
+      // set allergen filter values
+      allergens.forEach((allergen) => {
+        const optionWrapper = document.createElement('label');
+        const option = document.createElement('input');
+        option.type = 'checkbox';
+        option.value = allergen.id;
+        const text = document.createTextNode(allergen.name);
+        optionWrapper.appendChild(option);
+        optionWrapper.appendChild(text);
+        document.getElementById('checkboxes').appendChild(optionWrapper);
+      });
+
+      // filter pizzas after appending all checkboxes
+      hideFiltered();
       createAddToCartButton();
       userForm();
     });
-}
 
-const pizzaListElement = document.getElementById('pizza-list');
+}
 
 const addToCartButtonListener = () => {
   const button = document.getElementById('addToCartButton');
@@ -94,7 +109,7 @@ const userForm = () => {
   <button id='orderButton' class='btn'>Place order</button>`);
 
   let orderObjectId = 0;
-  document.getElementById('orderButton').addEventListener('click', (event) => {
+  document.getElementById('orderButton').addEventListener('click', (/*event*/) => {
     //event.preventDefault(); ////////////////////////////////////////////////////////////////////////
     orderObjectId++;
     orderObject.id = orderObjectId;
@@ -103,7 +118,7 @@ const userForm = () => {
     orderObject.customer = getUserInfo();
 
     document.querySelectorAll('.pizzaAmount').forEach((amount) => {
-      if (amount.value && amount.value !== 0) {
+      if (amount.value && amount.value > 0) {
         const pizzaObject = {
           'id': parseInt(amount.parentElement.dataset.id) + 1,
           'amount': amount.value,
@@ -139,6 +154,42 @@ const getDate = () => {
   };
   return orderDateAndTime;
 };
+
+let expanded = false;
+
+// eslint-disable-next-line no-unused-vars
+function showCheckboxes() {
+  const checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+}
+
+
+function hideFiltered() {
+  document.getElementById('checkboxes').addEventListener('change', function (e) {
+    if (e.target.type === 'checkbox') {
+      const selectedAllergens = Array.from(document.querySelectorAll('#checkboxes input:checked')).map(x => x.nextSibling.textContent);
+
+      document.querySelectorAll('.pizza-item').forEach(item => {
+        const itemAllergens = item.querySelector('.pizza-allergens').textContent
+          .replace('Contains: ', '')
+          .split(', ')
+          .map(str => str.trim());
+
+        if (selectedAllergens.some(allergen => itemAllergens.includes(allergen))) {
+          item.style.display = 'none';
+        } else {
+          item.style.display = '';
+        }
+      });
+    }
+  });
+}
 
 const loadEvent = () => {
   fetchPizzasAndAllergens();
