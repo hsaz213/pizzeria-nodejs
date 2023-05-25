@@ -64,7 +64,7 @@ const createAddToCartButton = () => {
   button.id = 'addToCartButton';
   button.classList.add('btn');
   button.textContent = 'Add to cart';
-  pizzaListElement.appendChild(button);
+  document.getElementById('root').appendChild(button);
   addToCartButtonListener();
 };
 
@@ -74,26 +74,28 @@ const orderObject = {}; ////////////////////////////////////////////////////////
 const userForm = () => {
   const userFormContainer = document.createElement('div');
   userFormContainer.id = 'container';
-  pizzaListElement.appendChild(userFormContainer);
+  document.getElementById('root').appendChild(userFormContainer);
   const form = document.createElement('form');
   form.id = 'customerForm';
+  form.method = 'POST';
+  form.action = '/order';
   form.classList.add('hidden');
   userFormContainer.appendChild(form);
 
   document.getElementById('customerForm').insertAdjacentHTML('beforeend',
     `<label for='name'>Name:</label>
-  <input type='text' name='name', required><br>
+  <input type='text' name='name' class='orderFormInput', required><br>
   <label for='email'>Email address:</label>
-  <input type='text' name='email', required><br>
+  <input type='text' name='email' class='orderFormInput', required><br>
   <label for='city'>City:</label>
-  <input type='text' name='city', required><br>
+  <input type='text' name='city' class='orderFormInput', required><br>
   <label for='street'>Street and number:</label>
-  <input type='text' name='street', required><br>
-  <button id='orderButton'>Place order</button>`);
+  <input type='text' name='street' class='orderFormInput', required><br>
+  <button id='orderButton' class='btn'>Place order</button>`);
 
   let orderObjectId = 0;
   document.getElementById('orderButton').addEventListener('click', (event) => {
-    event.preventDefault(); ////////////////////////////////////////////////////////////////////////
+    //event.preventDefault(); ////////////////////////////////////////////////////////////////////////
     orderObjectId++;
     orderObject.id = orderObjectId;
     orderObject.pizzas = [];

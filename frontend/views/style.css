@@ -7,6 +7,11 @@
     display: none;
 }
 
+#addToCartButton {
+    display: flex;
+    margin: auto;
+}
+
 h1 {
 display: flex;
 align-items: center;
@@ -122,3 +127,32 @@ text-shadow: 1px 1px 0 #000,
   .btn:active {
     background-color: #ff4500;
   }
+
+  #container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #customerForm {
+    width: 400px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .orderFormInput {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  
