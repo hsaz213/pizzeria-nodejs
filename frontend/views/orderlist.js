@@ -2,7 +2,9 @@ const getAllOrders = () => {
   fetch('http://127.0.0.1:9001/order').then((res) => res.json())
     .then((orderArray) => {
       const ordersElement = document.getElementById('pizza-list');
-      ordersElement.insertAdjacentHTML('afterbegin', '<h1>All orders</h1>');
+      const rootElement = document.getElementById('root');
+
+      rootElement.insertAdjacentHTML('afterbegin', '<h1>All orders</h1>');
 
       orderArray.forEach((order) => {
         ordersElement.insertAdjacentHTML('beforeend',
