@@ -3,6 +3,10 @@
     src: url('/fonts/hot-pizza.normal.ttf');
 }
 
+body {
+    background-image: url('/img/bg.avif');
+}
+
 .hidden {
     display: none;
 }

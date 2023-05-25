@@ -92,8 +92,8 @@ const userForm = () => {
   document.getElementById('root').appendChild(userFormContainer);
   const form = document.createElement('form');
   form.id = 'customerForm';
-  form.method = 'POST';
-  form.action = '/order';
+  //form.method = 'POST';
+  //form.action = '/order';
   form.classList.add('hidden');
   userFormContainer.appendChild(form);
 
@@ -109,15 +109,16 @@ const userForm = () => {
   <button id='orderButton' class='btn'>Place order</button>`);
 
   let orderObjectId = 0;
-  document.getElementById('orderButton').addEventListener('click', (/*event*/) => {
-    //event.preventDefault(); ////////////////////////////////////////////////////////////////////////
+  document.getElementById('orderButton').addEventListener('click', (event) => {
+    event.preventDefault(); ////////////////////////////////////////////////////////////////////////
     orderObjectId++;
     orderObject.id = orderObjectId;
     orderObject.pizzas = [];
     orderObject.date = getDate();
     orderObject.customer = getUserInfo();
+    console.log(orderObject);
 
-    document.querySelectorAll('.pizzaAmount').forEach((amount) => {
+    document.querySelectorAll('.orderFormInput').forEach((amount) => {
       if (amount.value && amount.value > 0) {
         const pizzaObject = {
           'id': parseInt(amount.parentElement.dataset.id) + 1,
@@ -126,7 +127,13 @@ const userForm = () => {
         orderObject.pizzas.push(pizzaObject);
       }
     });
-    console.log(orderObject);
+    fetch('/order', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(orderObject),
+    });
   });
 };
 
@@ -159,12 +166,12 @@ let expanded = false;
 
 // eslint-disable-next-line no-unused-vars
 function showCheckboxes() {
-  const checkboxes = document.getElementById("checkboxes");
+  const checkboxes = document.getElementById('checkboxes');
   if (!expanded) {
-    checkboxes.style.display = "block";
+    checkboxes.style.display = 'block';
     expanded = true;
   } else {
-    checkboxes.style.display = "none";
+    checkboxes.style.display = 'none';
     expanded = false;
   }
 }
@@ -173,15 +180,15 @@ function showCheckboxes() {
 function hideFiltered() {
   document.getElementById('checkboxes').addEventListener('change', function (e) {
     if (e.target.type === 'checkbox') {
-      const selectedAllergens = Array.from(document.querySelectorAll('#checkboxes input:checked')).map(x => x.nextSibling.textContent);
+      const selectedAllergens = Array.from(document.querySelectorAll('#checkboxes input:checked')).map((x) => x.nextSibling.textContent);
 
-      document.querySelectorAll('.pizza-item').forEach(item => {
+      document.querySelectorAll('.pizza-item').forEach((item) => {
         const itemAllergens = item.querySelector('.pizza-allergens').textContent
           .replace('Contains: ', '')
           .split(', ')
-          .map(str => str.trim());
+          .map((str) => str.trim());
 
-        if (selectedAllergens.some(allergen => itemAllergens.includes(allergen))) {
+        if (selectedAllergens.some((allergen) => itemAllergens.includes(allergen))) {
           item.style.display = 'none';
         } else {
           item.style.display = '';
@@ -196,3 +203,4 @@ const loadEvent = () => {
 };
 
 window.addEventListener('load', loadEvent);
+
