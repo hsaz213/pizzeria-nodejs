@@ -60,11 +60,16 @@ const listOrders = async (req, res) => {
 const placeOrders = async (req, res) => {
   try {
     const pizzaData = req.body;
-    const currentOrders = await fileReaderAsync(orderPath);
+    const currentOrders = await fsPromises.readFile(orderPath, 'utf8');
     const ordersArray = JSON.parse(currentOrders);
 
+    // Set the correct id for the new order
+    pizzaData.id = ordersArray.length + 1;
+
+    // Add the new order to the array
     ordersArray.push(pizzaData);
 
+    // Write the updated orders back to the file
     await fsPromises.writeFile(orderPath, JSON.stringify(ordersArray));
     res.status(200).send('OK');
   } catch (error) {
@@ -72,7 +77,6 @@ const placeOrders = async (req, res) => {
     console.error(error);
   }
 };
-
 
 
 module.exports = {
@@ -83,3 +87,4 @@ module.exports = {
   getMainPage,
   getOrdersPage,
 };
+

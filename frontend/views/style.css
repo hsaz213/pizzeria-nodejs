@@ -1,199 +1,201 @@
 @font-face {
-    font-family: 'hotPizza';
-    src: url('/fonts/hot-pizza.normal.ttf');
+  font-family: "hotPizza";
+  src: url("/fonts/hot-pizza.normal.ttf");
 }
 
 body {
-    background-image: url('/img/back.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-color: white;
+  background-image: linear-gradient(
+      90deg,
+      rgba(200, 0, 0, 0.5) 50%,
+      transparent 50%
+    ),
+    linear-gradient(rgba(200, 0, 0, 0.5) 50%, transparent 50%);
+  background-size: 50px 50px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 #addToCartButton {
-    display: flex;
-    margin: auto;
+  display: flex;
+  margin: auto;
+  margin-bottom: 2rem;
 }
 
 h1 {
-display: flex;
-align-items: center;
-justify-content: center;
-width: 20rem;
-padding: 1.5rem 1.5rem 1.5rem 1.5rem;
-font-family: 'hotPizza';
-font-size: 2.5rem;
-text-decoration: underline;
-/* text-shadow: 0.2rem 0.2rem 0.2rem yellow; */
-text-shadow: 1px 1px 0 #000,
-            -1px 1px 0 #000,
-            1px -1px 0 #000,
-            -1px -1px 0 #000,
-            0px 1px 0 #000,
-            0px -1px 0 #000,
-            -1px 0px 0 #000,
-            1px 0px 0 #000,
-            2px 2px 0 #000,
-            -2px 2px 0 #000,
-            2px -2px 0 #000,
-            -2px -2px 0 #000,
-            0px 2px 0 #000,
-            0px -2px 0 #000,
-            -2px 0px 0 #000,
-            2px 0px 0 #000,
-            1px 2px 0 #000,
-            -1px 2px 0 #000,
-            1px -2px 0 #000,
-            -1px -2px 0 #000,
-            2px 1px 0 #000,
-            -2px 1px 0 #000,
-            2px -1px 0 #000,
-            -2px -1px 0 #000;
-    /* text-shadow: black; */
-    color: red;
-    border-color: black;
-    text-decoration-color: yellow;
-    background-color: orangered;
-    border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 20rem;
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  font-family: "hotPizza";
+  font-size: 2.5rem;
+  text-decoration: underline;
+  /* text-shadow: 0.2rem 0.2rem 0.2rem yellow; */
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000,
+    -1px -1px 0 #000, 0px 1px 0 #000, 0px -1px 0 #000, -1px 0px 0 #000,
+    1px 0px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000,
+    -2px -2px 0 #000, 0px 2px 0 #000, 0px -2px 0 #000, -2px 0px 0 #000,
+    2px 0px 0 #000, 1px 2px 0 #000, -1px 2px 0 #000, 1px -2px 0 #000,
+    -1px -2px 0 #000, 2px 1px 0 #000, -2px 1px 0 #000, 2px -1px 0 #000,
+    -2px -1px 0 #000;
+  /* text-shadow: black; */
+  color: red;
+  border-color: black;
+  text-decoration-color: yellow;
+  /* background-color: orangered; */
+  border-radius: 1rem;
 }
 
-
 #pizza-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
 }
 
 .pizza-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    margin: 1rem;
-    padding: 1rem;
-    width: 12rem;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  margin: 1rem;
+  padding: 1rem;
+  width: 12rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-
 .pizza-name {
-    font-family: 'hotPizza';
-    /* text-decoration: underline; */
-        text-decoration: underline;
-    text-decoration-color: yellow;
-    text-decoration-style: double;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
+  font-family: "hotPizza";
+  /* text-decoration: underline; */
+  text-decoration: underline;
+  text-decoration-color: yellow;
+  text-decoration-style: double;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .pizza-price {
-    color: green;
-    font-weight: bold;
-    margin-bottom: 10px;
+  color: green;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .pizza-ingredients,
 .pizza-allergens {
-    font-size: 12px;
-    color: #777;
-    margin-bottom: 10px;
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 10px;
 }
 
 .pizza-img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    margin-bottom: 15px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 15px;
 }
 
 .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #ff8c00;
-    border: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn:hover {
-    background-color: #ff6f00;
-  }
-  
-  .btn:active {
-    background-color: #ff4500;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #ff8c00;
+  border: none;
+  transition: background-color 0.3s ease;
+}
 
-  #container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #customerForm {
-    width: 400px;
-    padding: 20px;
-    background-color: #f2f2f2;
-    border-radius: 8px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .orderFormInput {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 12px;
-  }
-  
-  .multiselect {
-    width: 200px;
-    background-color: aqua;
-    background-repeat: no-repeat;
-  }
-  
-  .selectBox {
-    position: relative;
-  }
-  
-  .selectBox select {
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .overSelect {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
-  
-  #checkboxes {
-    display: none;
-    border: 1px #dadada solid;
-  }
-  
-  #checkboxes label {
-    display: block;
-  }
-  
-  #checkboxes label:hover {
-    background-color: #1e90ff;
-  }
+.btn:hover {
+  background-color: #ff6f00;
+}
+
+.btn:active {
+  background-color: #ff4500;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#customerForm {
+  width: 400px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.orderFormInput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.multiselect {
+  position: relative; /* This is needed so that the absolute positioning of the dropdown is relative to this container */
+  width: 200px;
+  background-repeat: no-repeat;
+  margin-top: 2rem;
+  margin-left: 8rem;
+}
+
+.selectBox {
+  /* position: relative; */
+}
+
+.selectBox select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.overSelect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  /* position: absolute; */
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  max-height: 200px; /* Adjust as needed */
+  overflow-y: auto; /* Add a scrollbar if the content is too long */
+  z-index: 1;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}

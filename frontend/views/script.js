@@ -118,7 +118,7 @@ const userForm = () => {
     orderObject.customer = getUserInfo();
     console.log(orderObject);
 
-    document.querySelectorAll('.orderFormInput').forEach((amount) => {
+    document.querySelectorAll('div.pizza-item input.orderFormInput').forEach((amount) => {
       if (amount.value && amount.value > 0) {
         const pizzaObject = {
           'id': parseInt(amount.parentElement.dataset.id) + 1,
